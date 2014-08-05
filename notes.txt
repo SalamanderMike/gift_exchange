@@ -1,0 +1,99 @@
+// git notes
+
+// creates a branch
+git checkout -b gift_exchange
+
+// pushes new branch into master
+git checkout master
+
+// connecting got to folder
+git remote add origin git@...
+
+// pushes a branch
+git push origin gift_exchange
+
+// remove branch
+git reset --HARD HEAD
+
+// view previous commits
+git log
+
+// shows you all the branches you have
+git branch
+
+
+// API notes
+
+// npm install --save request
+
+// Apply
+// API keys
+// don't need to use access tokens
+// Environment Variables
+// store API key and API secret as env var in .bash_profile
+// export YELP_KEY=...
+// export YELP_SECRET=...
+// to access in node: process.env.YELP_KEY
+// to access in node: process.env.YELP_SECRET
+// Yelp uses oauth you can use npm oauth require to help
+// npm oauth docs have sample code
+// var tweets = JSON.parse(data).statuses
+// check out underscore.js 
+// lodash is a faster version of underscore
+// var _ = require('lodash')
+// var tweetText = _.pluck(tweets, "text") -pluck is lodash method
+
+// look up Yelp for node
+// npm install yelp
+// eventually separate out the code to another file like passport
+// 
+
+
+// SECRET KEYS
+
+// 
+
+
+// using jQuery to manipulate forms
+// in html, create form with id='form', text field id='field'
+var form = $('#formID')
+var field = $('field')
+
+
+form.field(function(event){
+	event.preventDefault();
+	alert(field.val())
+})
+
+
+
+
+
+// Progress Bar value change...
+<!-- View Code -->
+<form>
+    <label>Update Progress Value Observable</label>
+    <input type="text" data-bind="value: progressVal, valueUpdate:'afterkeydown'" />
+</form>
+<div data-bind="progress: 'progressWidth'"></div>
+ 
+<!-- View Model -->
+var ViewModel = function() {
+    //....
+    //...
+    self.progressVal = ko.observable(10);
+    self.progressWidth = ko.computed(function(){
+        return self.progressVal() + '%';
+    }, self);
+    //....
+    //...
+};
+
+
+
+
+
+
+
+
+

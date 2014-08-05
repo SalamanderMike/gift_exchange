@@ -10,7 +10,7 @@ var express = require('express'),
   db = require('./models/index.js'),
   pg = require('pg'),
   app = express();
-
+ 
 app.use(express.static(__dirname + '/public'));
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended: true}));
@@ -24,24 +24,37 @@ app.use(flash());
 
 // prepare our serialize at login. 
 passport.serializeUser(function (user, done){
+	// console.log("SERIALIZED");
 	done(null, user.id);
 });
 // Authorization. Passport automatically sends this on each (req,res)
 passport.deserializeUser(function (id, done){// req.logout();
+	// console.log("DESERIALIZED");
 	db.user.find({
 		where: {
 			id: id
 		}
-	}).then(function (error, user){
+	}).complete(function (error, user){
 		done(error, user);// .then either (error) out or send (user) on their way
 	});
 });
 
 
+
+
+
 // PAGES
 app.get('/', function (req, res) {
 	// if (!req.user){// req.user contains ALL table info of user
-		res.render('signup');// so, you could use req.user.id, req.user.firstname
+		res.redirect('/signup');// so, you could use req.user.id, req.user.firstname
+	// } else {
+	// 	  res.redirect('/home');
+	// }
+});
+
+app.get('/signup', function (req, res) {
+	// if (!req.user){// req.user contains ALL table info of user
+		res.render('signup');// so, you could use req.user.id, req.user.firstname -, {message: req.flash('signupMessage')}
 	// } else {
 	// 	  res.redirect('/home');
 	// }
@@ -58,8 +71,18 @@ app.get('/login', function (req, res) {
 app.get('/home', function (req, res) {
 	// if (!req.user){
 		res.render('home', {message: req.flash('loginMessage')});
+// 	} else {
+// 		res.render('/login');
+// 	}
+}); 
+
+app.get('/settings', function (req, res) {
+	// if (!req.user){
+		res.render('settings', {message: req.flash('settingsMessage')});
+
+		
 	// } else {
-	// 	res.render('/home');
+	// 	res.redirect('/home');
 	// }
 });
 
@@ -81,6 +104,31 @@ app.get('/about', function (req, res) {
 
 
 
+// functions
+app.post('/createUser', function (req, res){
+	db.user.createNewUser(
+		req.body.firstname, 
+		req.body.lastname, 
+		req.body.username, 
+		req.body.password, 		
+		req.body.roll, 
+		req.body.groupName, 
+		req.body.groupPassword, 
+
+// ask instructor about enabling flash here -, {message: req.flash('signupMessage')}
+		function (err){
+			res.render('signup');
+		}, 
+		function (success){
+			res.redirect('/home', {message: success.message});
+		});
+});
+
+app.post('/login', passport.authenticate('local', {
+	successRedirect: '/home',
+	failureRedirect: '/login',
+	failureFlash: true
+}));
 
 
 
@@ -93,8 +141,11 @@ app.get('/about', function (req, res) {
 
 
 
-
-
+// logout!!! Wipes out cookie data
+app.get('/logout', function (req, res) {
+	req.logout();
+	res.redirect('/');
+});
 
 
 app.listen(3000, function(){

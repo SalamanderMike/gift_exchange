@@ -2,7 +2,7 @@
 <nav class="navbar navbar-default navbar-inverse navbar-fixed-top">
 	<div class="container">
 		<div class="navbar-header">
-			<a class="navbar-brand">Sign Up!</a>
+			<a class="navbar-brand">GIFT EXCHANGE!</a>
 		</div>
 		<div class="collapse navbar-collapse">
 			<ul class="nav navbar-nav">
@@ -13,10 +13,44 @@
 		</div>
 	</div>
 </nav>
+<br/><br/><br/><br/><br/>
+<!-- flash() here -->
 
-
-
-
+<div class="container" id="wrap">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <form action="/createUser" method="post" accept-charset="utf-8" class="form" role="form">
+      <legend>Sign Up</legend>
+        <h4>It's free!</h4>
+        <div class="row">
+          <div class="col-xs-6 col-md-6">
+            <input type="text" name="firstname" value="" class="form-control input-lg" placeholder="First Name"/>
+          </div>
+          <div class="col-xs-6 col-md-6">
+            <input type="text" name="lastname" value="" class="form-control input-lg" placeholder="Last Name"/>
+          </div>
+        </div>
+        <input type="text" name="username" value="" class="form-control input-lg" placeholder="Username"/>
+        <!-- Change type to password after testing -->
+        <input type="text" name="password" value="" class="form-control input-lg" placeholder="Password"/>
+        <input type="text" name="confirm_password" value="" class="form-control input-lg" placeholder="Confirm Password"/>
+        <label>Are you joining a Group? Or creating a Group?</label><br/>
+        <label class="radio-inline">
+            <input type="radio" name="roll" value="false" id="participant" />Joining
+        </label>
+        <label class="radio-inline">
+            <input type="radio" name="roll" value="true" id="admin"/>Creating
+        </label>
+        <input type="text" name="groupName" value="" class="form-control input-lg" placeholder="Your Group Name"/>
+        <input type="text" name="groupPassword" value="" class="form-control input-lg" placeholder="Your Group Password"/>
+        <br />
+        <button class="btn btn-lg btn-primary btn-block signup-btn" type="submit">Create my account</button>
+      	 <br/><br/><br/>
+        <a href="/login">Already have an account? Login here!</a>
+      </form>          
+    </div>
+	</div>            
+</div>
 
 
 

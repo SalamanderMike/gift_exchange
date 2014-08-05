@@ -35,7 +35,7 @@ module.exports = {
   		},
   		createdAt: DataTypes.DATE,
   		updatedAt: DataTypes.DATE
-  	}).then(done)
+  	}).complete(done)
   },
   down: function(migration, DataTypes, done) {
   	migration.dropTable('users').then(done);
