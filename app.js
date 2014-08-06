@@ -44,7 +44,7 @@ passport.deserializeUser(function (id, done){// req.logout();
 });
 
 // create process env port to be same on both local and heroku
-app.listen(80, function(){
+app.listen(process.env.PORT || 3000, function(){
   console.log("NODEMON RIDING IN THE CODE-VAN localhost:3000");
 });
 
