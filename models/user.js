@@ -39,7 +39,7 @@ module.exports = function User (sequelize, DataTypes){
 				if (password.length < 6){// ACK!!! ON ERROR ( add req, above for flash )
 				// return done(err, req.flash('signupMessage', 'Ack!!! Password should be more than 6 chars'));
 					err({message: 'Password should be more than 6 chars'});
-				} else {
+				} else { 
 					User.create({// *DO THIS* IF NO ERROR
 						firstname: firstname,
 						lastname: lastname,

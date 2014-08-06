@@ -43,7 +43,13 @@
         </label>
         <input type="text" name="groupName" value="" class="form-control input-lg" placeholder="Your Group Name"/>
         <input type="text" name="groupPassword" value="" class="form-control input-lg" placeholder="Your Group Password"/>
-        <br />
+        <br/>
+
+        <% if (typeof message !== 'undefined'){ %>
+          <p style="color: red; text-align: center;"><%= message %></p>
+        <% } %>
+
+        <br/>
         <button class="btn btn-lg btn-primary btn-block signup-btn" type="submit">Create my account</button>
       	 <br/><br/><br/>
         <a href="/login">Already have an account? Login here!</a>

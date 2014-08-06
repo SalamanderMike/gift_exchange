@@ -15,7 +15,106 @@
 			</ul>	
 		</div>				
 	</div>
-</nav>
+</nav><br/><br/><br/>
+
+<div class="container">
+<!-- Link to Profile -->
+<!-- Buttons within Tab container-->
+<table>
+	<form action="/settings">
+		<input type="submit" class="btn btn-primary btn-sm btn3d" value="Admin Settings">
+	</form>
+<!-- This button needs to change its action -->
+	<form action="/home">
+		<input type="submit" class="btn btn-success btn-sm btn3d" value="Your Giftee's Profile Summary">
+	</form>
+	<form action="editProfile">
+		<input type="submit" class="btn btn-danger btn-sm btn3d" value="Edit Your Profile">
+	</form>
+</table>
+<!-- Tab Display -->
+	<div class="row">
+    <div class="col-lg-11 col-lg-11 col-lg-11 col-xs-11 bhoechie-tab-container">
+      <div class="col-sm-3 col-md-3 col-sm-3 col-md-3 bhoechie-tab-menu">
+        <div class="list-group">
+          <a href="#" class="list-group-item active text-center">
+            <h4 class="glyphicon glyphicon-glass"></h4><br/>Cuisine
+          </a>
+          <a href="#" class="list-group-item text-center">
+            <h4 class="glyphicon glyphicon-film"></h4><br/>Hobbies
+          </a>
+          <a href="#" class="list-group-item text-center">
+            <h4 class="glyphicon glyphicon-credit-card"></h4><br/>Stores
+          </a>
+          <a href="#" class="list-group-item text-center">
+            <h4 class="glyphicon glyphicon-book"></h4><br/>Books
+          </a>
+          <a href="#" class="list-group-item text-center">
+            <h4 class="glyphicon glyphicon-tags"></h4><br/>Clothes
+          </a>
+          <a href="#" class="list-group-item text-center">
+            <h4 class="glyphicon glyphicon-gift"></h4><br/>Jewelry
+          </a>
+          <a href="#" class="list-group-item text-center">
+            <h4 class="glyphicon glyphicon-picture"></h4><br/>Art
+          </a>
+        </div>
+      </div>
+      <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 bhoechie-tab">
+          <!-- Restaurants section -->
+          <div class="bhoechie-tab-content active">
+              <center>
+                <h1 class="glyphicon glyphicon-glass" style="font-size:14em;color:#55518a"></h1>
+                <h2 style="margin-top: 0;color:#55518a">My Favorite Cuisine</h2>
+              </center>
+          </div>
+          <!-- Hobbies section -->
+          <div class="bhoechie-tab-content">
+              <center>
+                <h1 class="glyphicon glyphicon-film" style="font-size:12em;color:#55518a"></h1>
+                <h2 style="margin-top: 0;color:#55518a">My Favorite Hobbies</h2>
+              </center>
+          </div>
+
+          <!-- Stores search -->
+          <div class="bhoechie-tab-content">
+              <center>
+                <h1 class="glyphicon glyphicon-credit-card" style="font-size:12em;color:#55518a"></h1>
+                <h2 style="margin-top: 0;color:#55518a">My Favorite Stores</h2>
+              </center>
+          </div>
+          <!-- Books search -->
+          <div class="bhoechie-tab-content">
+              <center>
+                <h1 class="glyphicon glyphicon-book" style="font-size:12em;color:#55518a"></h1>
+                <h2 style="margin-top: 0;color:#55518a">My Favorite Genres of Books </h2>
+              </center>
+          </div>
+          <!-- Clothes search -->
+          <div class="bhoechie-tab-content">
+              <center>
+                <h1 class="glyphicon glyphicon-tags" style="font-size:12em;color:#55518a"></h1>
+                <h2 style="margin-top: 0;color:#55518a">Clothes I Like to Receive as Gifts</h2>
+              </center>
+          </div>
+          <!-- Jewelry search -->
+          <div class="bhoechie-tab-content">
+              <center>
+                <h1 class="glyphicon glyphicon-gift" style="font-size:12em;color:#55518a"></h1>
+                <h2 style="margin-top: 0;color:#55518a">Jewelry I Like to Wear</h2>
+              </center>
+          </div>
+          <!-- Art search -->
+          <div class="bhoechie-tab-content">
+              <center>
+                <h1 class="glyphicon glyphicon-picture" style="font-size:12em;color:#55518a"></h1>
+                <h2 style="margin-top: 0;color:#55518a">My Favorite Forms of Art</h2>
+              </center>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 
@@ -37,9 +136,17 @@
 
 
 
-
-
-
-
+<script>
+$(document).ready(function() {
+    $("div.bhoechie-tab-menu>div.list-group>a").click(function(e) {
+        e.preventDefault();
+        $(this).siblings('a.active').removeClass("active");
+        $(this).addClass("active");
+        var index = $(this).index();
+        $("div.bhoechie-tab>div.bhoechie-tab-content").removeClass("active");
+        $("div.bhoechie-tab>div.bhoechie-tab-content").eq(index).addClass("active");
+    });
+});
+</script>
 
 <% include partials/footer.ejs%>

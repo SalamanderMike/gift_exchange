@@ -1,0 +1,204 @@
+<% include partials/header.ejs%>
+<nav class="navbar navbar-default navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand">Gift Exchange</a>
+    </div>
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="/home">Home</a></li>
+        <li><a href="/contact">Contact</a></li>
+        <li><a href="/about">About</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/logout">Logout</a></li>
+      </ul> 
+    </div>        
+  </div>
+</nav><br/><br/><br/>
+
+<div class="container">
+<!-- Link to Profile -->
+<!-- Buttons within Tab container-->
+<table>
+  <form action="/settings">
+    <input type="submit" class="btn btn-primary btn-sm btn3d" value="Admin Settings">
+  </form>
+<!-- This button needs to change its action -->
+  <form action="/home">
+    <input type="submit" class="btn btn-info btn-sm btn3d" value="View Your Own Profile Summary">
+  </form>
+</table>
+<!-- Tab Display -->
+  <div class="row">
+    <div class="col-lg-11 col-lg-11 col-lg-11 col-xs-11 bhoechie-tab-container">
+      <div class="col-sm-3 col-md-3 col-sm-3 col-md-3 bhoechie-tab-menu">
+        <div class="list-group">
+          <a href="#" class="list-group-item active text-center">
+            <h4 class="glyphicon glyphicon-glass"></h4><br/>Cuisine
+          </a>
+          <a href="#" class="list-group-item text-center">
+            <h4 class="glyphicon glyphicon-film"></h4><br/>Hobbies
+          </a>
+          <a href="#" class="list-group-item text-center">
+            <h4 class="glyphicon glyphicon-credit-card"></h4><br/>Stores
+          </a>
+          <a href="#" class="list-group-item text-center">
+            <h4 class="glyphicon glyphicon-book"></h4><br/>Books
+          </a>
+          <a href="#" class="list-group-item text-center">
+            <h4 class="glyphicon glyphicon-tags"></h4><br/>Clothes
+          </a>
+          <a href="#" class="list-group-item text-center">
+            <h4 class="glyphicon glyphicon-gift"></h4><br/>Jewelry
+          </a>
+          <a href="#" class="list-group-item text-center">
+            <h4 class="glyphicon glyphicon-picture"></h4><br/>Art
+          </a>
+        </div>
+      </div>
+      <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 bhoechie-tab">
+          <!-- Cuisine section -->
+          <div class="bhoechie-tab-content active">
+              <center>
+                <h1 class="glyphicon glyphicon-glass" style="font-size:14em;color:#f0ad4e"></h1>
+                <h2 style="margin-top: 0;color:#55518a">My Favorite Cuisine</h2>
+                <form action="/enterData" method="post">
+                  <input type="text" name="cuisine[0]" placeholder="Vegetarian"><br/><br/>
+                  <input type="text" name="cuisine[1]" placeholder="Coffee"><br/><br/>
+                  <input type="text" name="cuisine[2]" placeholder="Mexican"><br/><br/>
+                  <input type="text" name="cuisine[3]" placeholder="Pizza"><br/><br/>
+                  <input type="text" name="cuisine[4]" placeholder="Drinks"><br/><br/>
+                  <input type="submit" value="Put it in my Profile!">
+                </form>
+              </center>
+          </div>
+          <!-- Hobbies section -->
+          <div class="bhoechie-tab-content">
+              <center>
+                <h1 class="glyphicon glyphicon-film" style="font-size:12em;color:#545454"></h1>
+                <h2 style="margin-top: 0;color:#55518a">My Favorite Hobbies</h2>
+                <form>
+                  <input type="text" placeholder="Rock Climbing"><br/><br/>
+                  <input type="text" placeholder="Movies"><br/><br/>
+                  <input type="text" placeholder="Reading"><br/><br/>
+                  <input type="text" placeholder="Cooking"><br/><br/>
+                  <input type="text" placeholder="Sports"><br/><br/>
+                  <input type="submit" value="Put it in my Profile!">
+                </form>
+              </center>
+          </div>
+          <!-- Stores search -->
+          <div class="bhoechie-tab-content">
+              <center>
+                <h1 class="glyphicon glyphicon-credit-card" style="font-size:12em;color:#241c82"></h1>
+                <h2 style="margin-top: 0;color:#55518a">My Favorite Stores</h2>
+                <form>
+                  <input type="text" placeholder="JC Penny"><br/><br/>
+                  <input type="text" placeholder="Best Buy"><br/><br/>
+                  <input type="text" placeholder="iTunes"><br/><br/>
+                  <input type="text" placeholder="Google Play"><br/><br/>
+                  <input type="text" placeholder="Sports Authority"><br/><br/>
+                  <input type="submit" value="Put it in my Profile!">
+                </form>
+              </center>
+          </div>
+          <!-- Books search -->
+          <div class="bhoechie-tab-content">
+              <center>
+                <h1 class="glyphicon glyphicon-book" style="font-size:12em;color:#543407"></h1>
+                <h2 style="margin-top: 0;color:#55518a">My Favorite Genres of Books </h2>
+                <form>
+                  <input type="text" placeholder="Mystery"><br/><br/>
+                  <input type="text" placeholder="Sci-fi"><br/><br/>
+                  <input type="text" placeholder="Comedy"><br/><br/>
+                  <input type="text" placeholder="Biography"><br/><br/>
+                  <input type="text" placeholder="Historical"><br/><br/>
+                  <input type="submit" value="Put it in my Profile!">
+                </form>
+              </center>
+          </div>
+          <!-- Clothes search -->
+          <div class="bhoechie-tab-content">
+              <center>
+                <h1 class="glyphicon glyphicon-tags" style="font-size:12em;color:#7f221f"></h1>
+                <h2 style="margin-top: 0;color:#55518a">Clothes I Like to Receive as Gifts</h2>
+                <form>
+                  <input type="text" placeholder="T-Shirt"><br/><br/>
+                  <input type="text" placeholder="Scarf"><br/><br/>
+                  <input type="text" placeholder="Sweater"><br/><br/>
+                  <input type="text" placeholder="Tie"><br/><br/>
+                  <input type="text" placeholder="Sportswear"><br/><br/>
+                  <input type="submit" value="Put it in my Profile!">
+                </form>
+              </center>
+          </div>
+          <!-- Jewelry search -->
+          <div class="bhoechie-tab-content">
+              <center>
+                <h1 class="glyphicon glyphicon-gift" style="font-size:12em;color:#b61cca"></h1>
+                <h2 style="margin-top: 0;color:#55518a">Jewelry I Like to Wear</h2>
+                <form>
+                  <input type="text" placeholder="Earrings"><br/><br/>
+                  <input type="text" placeholder="Necklace"><br/><br/>
+                  <input type="text" placeholder="Pendant"><br/><br/>
+                  <input type="text" placeholder="Bracelet"><br/><br/>
+                  <input type="text" placeholder="Pin"><br/><br/>
+                  <input type="submit" value="Put it in my Profile!">
+                </form>
+              </center>
+          </div>
+          <!-- Art search -->
+          <div class="bhoechie-tab-content">
+              <center>
+                <h1 class="glyphicon glyphicon-picture" style="font-size:12em;color:#0b512d"></h1>
+                <h2 style="margin-top: 0;color:#55518a">My Favorite Forms of Art</h2>
+                <form>
+                  <input type="text" placeholder="Carving"><br/><br/>
+                  <input type="text" placeholder="Painting"><br/><br/>
+                  <input type="text" placeholder="Figurines"><br/><br/>
+                  <input type="text" placeholder="Photography"><br/><br/>
+                  <input type="text" placeholder="imports"><br/><br/>
+                  <input type="submit" value="Put it in my Profile!">
+                </form>
+              </center>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+$(document).ready(function() {
+    $("div.bhoechie-tab-menu>div.list-group>a").click(function(e) {
+        e.preventDefault();
+        $(this).siblings('a.active').removeClass("active");
+        $(this).addClass("active");
+        var index = $(this).index();
+        $("div.bhoechie-tab>div.bhoechie-tab-content").removeClass("active");
+        $("div.bhoechie-tab>div.bhoechie-tab-content").eq(index).addClass("active");
+    });
+});
+</script>
+
+<% include partials/footer.ejs%>
