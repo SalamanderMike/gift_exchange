@@ -91,7 +91,9 @@ var ViewModel = function() {
 
 
 
-
+// bot q me ask:
+// passport in separate file
+// 
 
 
 

@@ -77,7 +77,7 @@ router.get('/about', function (req, res) {
 
 
 // functions
-router.post('/createUser', function (req, res){
+router.post('/createUser', function (req, res){// db.profile.create() is a sequelize method
 	db.user.createNewUser(
 		req.body.firstname, 
 		req.body.lastname, 
@@ -118,7 +118,7 @@ router.post('/enterData', function (req, res){
 	var foods = [];
 	for (var i = 0; i < 5; i++){
 		foods.push(req.body.cuisine[i]);
-		
+
 	}
 
 
