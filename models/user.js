@@ -14,17 +14,20 @@ module.exports = function User (sequelize, DataTypes){
 			type: DataTypes.STRING,
 			validate: {notEmpty: true}
 			},
-		groupName: DataTypes.STRING,
-		groupPassword: {
-			type: DataTypes.STRING,
-			unique: true,
-			validate: {notEmpty: true}
-		},
 		firstname: DataTypes.STRING,
 		lastname: DataTypes.STRING,
 		phone: DataTypes.STRING,
-		commit: DataTypes.BOOLEAN,
-		admin: DataTypes.BOOLEAN,
+		match: DataTypes.INTEGER,
+		cuisine: DataTypes.ARRAY(DataTypes.STRING),
+  	hobbies: DataTypes.ARRAY(DataTypes.STRING),
+  	stores: DataTypes.ARRAY(DataTypes.STRING),
+  	books: DataTypes.ARRAY(DataTypes.STRING),
+  	clothes: DataTypes.ARRAY(DataTypes.STRING),
+  	art: DataTypes.ARRAY(DataTypes.STRING),
+  	color: DataTypes.ARRAY(DataTypes.STRING),
+  	animals: DataTypes.ARRAY(DataTypes.STRING),
+  	metal: DataTypes.ARRAY(DataTypes.STRING),
+  	elements: DataTypes.ARRAY(DataTypes.STRING)
 		},		
 		{classMethods: {
 			encryptPass: function(password){
@@ -32,34 +35,30 @@ module.exports = function User (sequelize, DataTypes){
 				return hash;
 			},
 			comparePass: function(userPass, dbPass){
-				//carefull not to salt twice
 				return bcrypt.compareSync(userPass, dbPass);
 			},
-			createNewUser: function(firstname, lastname, username, password, roll, groupName, groupPassword, err, success){
+			createNewUser: function(firstname, lastname, username, password, err, success){
 				if (password.length < 6){// ACK!!! ON ERROR ( add req, above for flash )
 				// return done(err, req.flash('signupMessage', 'Ack!!! Password should be more than 6 chars'));
 					err({message: 'Password should be more than 6 chars'});
 				} else { 
-					User.create({// *DO THIS* IF NO ERROR
+					User.create({
 						firstname: firstname,
 						lastname: lastname,
 						username: username,
 						password: User.encryptPass(password),
-						admin: roll,
-						groupName: groupName,
-						groupPassword: groupPassword //User.encryptPass(groupPassword),
 					}).error(function (error){// error = object from Sequelize
-						console.log(error);// ON ERROR...
+						console.log(error);
 						if (error.username) {
 							err({message: 'Your username should be 6 chars'});
 						} else {
 							err({message: 'An account with that username already exists'});
 						} 
-					}).success(function (user){// WHEN DONE, DISPLAY SUCCESS
+					}).success(function (user){
 						success({message: 'Account created!'});
 					});
 				}
-			},
+			}
 		}
 	}); 
   

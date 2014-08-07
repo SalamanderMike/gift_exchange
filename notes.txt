@@ -117,8 +117,8 @@ User.find({ where: {id: id}, include: [Group] }).success(function(user){
     firstname:      DataTypes.STRING,
     lastname:       DataTypes.STRING,
     phone:          DataTypes.STRING,
-    commit          DataTypes.BOOLEAN,
-    admin           DataTypes.BOOLEAN,
+    match           DataTypes.INTEGER, -the id of their matched giftee
+
 
     cuisine:        DataTypes.ARRAY(DataTypes.STRING),
     hobbies:        DataTypes.ARRAY(DataTypes.STRING),
@@ -137,7 +137,7 @@ User.find({ where: {id: id}, include: [Group] }).success(function(user){
 
 
 
-
+// Admin button on home page takes you to group login
 
 
 

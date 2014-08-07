@@ -10,7 +10,6 @@ var express = require('express'),
 	  db = require('./models/index.js'),
 	  pg = require('pg'),
 	  site = require('./routes/site'),
-	  // security = require('./security/passport.js'),
 	  app = express();
  
 app.use(express.static(__dirname + '/public'));
@@ -24,7 +23,6 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 app.use(site);
-// app.use(security);
 
 
 // SECURITY **********************************
@@ -33,16 +31,13 @@ passport.serializeUser(function (user, done){
 });
 passport.deserializeUser(function (id, done){
 	db.user.find({
-		where: {
-			id: id
-		}
+		where: {id: id}
 	}).complete(function (error, user){
-		done(error, user);// .then either (error) out or send (user) on their way
+		done(error, user);
 	});
 });
 
 // PORT **************************************
-// create process env port to be same on both local and heroku
 app.listen(process.env.PORT || 3000, function(){
   console.log("NODEMON RIDING IN THE CODE-VAN localhost:3000");
 });

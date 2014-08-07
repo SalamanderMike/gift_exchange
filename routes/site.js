@@ -1,7 +1,8 @@
 var express = require('express'),
     router = express.Router(),
    	passport = require('passport'),
-		passportLocal = require('passport-local');
+		passportLocal = require('passport-local'),
+	  db = require('../models/index.js');
 
 // GLOBAL VARIABLES
 var cuisine = [],
@@ -93,11 +94,6 @@ router.post('/createUser', function (req, res){// db.profile.create() is a seque
 		req.body.lastname, 
 		req.body.username, 
 		req.body.password, 		
-		req.body.roll, 
-		req.body.groupName, 
-		req.body.groupPassword, 
-
-// ask instructor about enabling flash here -, {message: req.flash('signupMessage')}
 		function (err){
 			var eMessage = req.flash('signupMessage');
 			res.render('signup', {message: eMessage});
@@ -107,18 +103,8 @@ router.post('/createUser', function (req, res){// db.profile.create() is a seque
 		});
 });
 
-router.post('/login', passport.authenticate('local',{ //function (req, res){
+router.post('/login', passport.authenticate('local', {
 	successRedirect: '/settings',
-
-	// function(req){
-	// 	console.log(req.user.admin)
-	// 	if (req.user.admin === true){
-	// 		res.render('settings', {message: req.flash('loginMessage')});
-	// 	} else {
-	// 		res.render('login', {message: req.flash('loginMessage')});
-	// 	}
-	// },
-
 	failureRedirect: '/login',
 	failureFlash: true
 }));
