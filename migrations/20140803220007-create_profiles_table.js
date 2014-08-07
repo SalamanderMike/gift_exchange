@@ -6,19 +6,18 @@ module.exports = {
 	  		primaryKey: true,
 	  		autoIncrement: true
 	  	},
-	  	spendingLimit: DataTypes.INTEGER, // changed from dollarLimit
-	  	totalParticipants: DataTypes.INTEGER,// added
-	  	gender: DataTypes.BOOLEAN,
-	  	color: DataTypes.ARRAY(DataTypes.STRING),
-	  	animals: DataTypes.ARRAY(DataTypes.STRING),
-	  	books: DataTypes.ARRAY(DataTypes.STRING),
-	  	clothes: DataTypes.ARRAY(DataTypes.STRING),
-	  	jewelry: DataTypes.ARRAY(DataTypes.STRING),
-	  	art: DataTypes.ARRAY(DataTypes.STRING),
-	  	food: DataTypes.ARRAY(DataTypes.STRING),
+	  	spendingLimit: DataTypes.INTEGER,
+	  	groupTotal: DataTypes.INTEGER,
+	  	cuisine: DataTypes.ARRAY(DataTypes.STRING),
 	  	hobbies: DataTypes.ARRAY(DataTypes.STRING),
 	  	stores: DataTypes.ARRAY(DataTypes.STRING),
-	  	restaurants: DataTypes.ARRAY(DataTypes.STRING),
+	  	books: DataTypes.ARRAY(DataTypes.STRING),
+	  	clothes: DataTypes.ARRAY(DataTypes.STRING),
+	  	art: DataTypes.ARRAY(DataTypes.STRING),
+	  	color: DataTypes.ARRAY(DataTypes.STRING),
+	  	animals: DataTypes.ARRAY(DataTypes.STRING),
+	  	metal: DataTypes.ARRAY(DataTypes.STRING),
+	  	elements: DataTypes.ARRAY(DataTypes.STRING),
 	  	createdAt: DataTypes.DATE,
     	updatedAt: DataTypes.DATE
 	  	}).complete(done)

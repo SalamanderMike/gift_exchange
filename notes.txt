@@ -91,9 +91,68 @@ var ViewModel = function() {
 
 
 
-// bot q me ask:
-// passport in separate file
-// 
+// Group Table - oneGroup.hasMany(db.users)
+    id              (required)
+
+    groupName       STRING
+    groupID         password
+    spendingLimit   INTEGER
+    groupTotal      INTEGER - use findAndCountAll() to compare with signups
+    admin           user.id - allowNull: false
+
+    createdAt       (required)
+    updatedAt       (required)
+
+// to find all users in a group (may need to switch User / Group)
+User.find({ where: {id: id}, include: [Group] }).success(function(user){ 
+  console.log(user.group)
+})
+
+
+// User Table
+    id              (required)
+
+    username
+    password
+    firstname:      DataTypes.STRING,
+    lastname:       DataTypes.STRING,
+    phone:          DataTypes.STRING,
+    commit          DataTypes.BOOLEAN,
+    admin           DataTypes.BOOLEAN,
+
+    cuisine:        DataTypes.ARRAY(DataTypes.STRING),
+    hobbies:        DataTypes.ARRAY(DataTypes.STRING),
+    stores:         DataTypes.ARRAY(DataTypes.STRING),
+    books:          DataTypes.ARRAY(DataTypes.STRING),
+    clothes:        DataTypes.ARRAY(DataTypes.STRING),
+    art:            DataTypes.ARRAY(DataTypes.STRING),
+    color:          DataTypes.ARRAY(DataTypes.STRING),
+    animals:        DataTypes.ARRAY(DataTypes.STRING),
+    metal:          DataTypes.ARRAY(DataTypes.STRING),
+    elements:       DataTypes.ARRAY(DataTypes.STRING),
+
+    createdAt       (required)
+    updatedAt       (required)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -62,7 +62,7 @@ module.exports = function User (sequelize, DataTypes){
 			},
 		}
 	}); 
-
+  
 	// close define('User')		
 	// done(err) // when we screw up
 	// done(null, false) // when we do right, user does wrong

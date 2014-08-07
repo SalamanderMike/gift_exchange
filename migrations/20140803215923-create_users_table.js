@@ -18,7 +18,7 @@ module.exports = {
   			type: DataTypes.STRING,
   			allowNull: false
   		},
-  		groupPassword: {
+  		groupID: {
   			type: DataTypes.STRING,
   			allowNull: false
   		},

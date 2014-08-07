@@ -26,14 +26,12 @@ app.use(flash());
 app.use(site);
 // app.use(security);
 
-// prepare our serialize at login. 
+
+// SECURITY **********************************
 passport.serializeUser(function (user, done){
-	// console.log("SERIALIZED");
 	done(null, user.id);
 });
-// Authorization. Passport automatically sends this on each (req,res)
-passport.deserializeUser(function (id, done){// req.logout();
-	// console.log("DESERIALIZED");
+passport.deserializeUser(function (id, done){
 	db.user.find({
 		where: {
 			id: id
@@ -43,11 +41,13 @@ passport.deserializeUser(function (id, done){// req.logout();
 	});
 });
 
+// PORT **************************************
 // create process env port to be same on both local and heroku
 app.listen(process.env.PORT || 3000, function(){
   console.log("NODEMON RIDING IN THE CODE-VAN localhost:3000");
 });
 
+// EXPORT ************************************
 module.exports = app;
 
 
