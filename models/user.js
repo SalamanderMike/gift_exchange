@@ -17,6 +17,7 @@ module.exports = function User (sequelize, DataTypes){
 		firstname: DataTypes.STRING,
 		lastname: DataTypes.STRING,
 		phone: DataTypes.STRING,
+		zip: DataTypes.INTEGER,
 		match: DataTypes.INTEGER,
 		cuisine: DataTypes.ARRAY(DataTypes.STRING),
   	hobbies: DataTypes.ARRAY(DataTypes.STRING),
@@ -30,6 +31,9 @@ module.exports = function User (sequelize, DataTypes){
   	elements: DataTypes.ARRAY(DataTypes.STRING)
 		},		
 		{classMethods: {
+			associate: function(db){// tell user that he hasOne group
+				User.hasMany(db.group, {through: 'linkers'});
+			},
 			encryptPass: function(password){
 				var hash = bcrypt.hashSync(password, salt);
 				return hash;
@@ -55,7 +59,7 @@ module.exports = function User (sequelize, DataTypes){
 							err({message: 'An account with that username already exists'});
 						} 
 					}).success(function (user){
-						success({message: 'Account created!'});
+						success(user);
 					});
 				}
 			}

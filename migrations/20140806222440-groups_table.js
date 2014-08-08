@@ -16,16 +16,12 @@ module.exports = {
   		},
 	  	spendingLimit: DataTypes.INTEGER,
 	  	groupTotal: DataTypes.INTEGER,
-	  	admin: {
-  			type: DataTypes.INTEGER,
-  			allowNull: false
-  		},
 	  	createdAt: DataTypes.DATE,
     	updatedAt: DataTypes.DATE
-	  	}).complete(done)
+	  	}).complete(done);
   },
   down: function(migration, DataTypes, done) {
-  	migration.dropTable('groups').then(done);
+  	migration.dropTable('groups').complete(done);
   }
-}
+};
 

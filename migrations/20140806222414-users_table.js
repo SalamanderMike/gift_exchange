@@ -1,7 +1,7 @@
 module.exports = {
   up: function(migration, DataTypes, done) {
   	migration.createTable('users', 
-  		{id: {
+  		{id: { // changed from id because error was asking for userId
   			type: DataTypes.INTEGER,
   			primaryKey: true,
   			autoIncrement: true
@@ -17,6 +17,7 @@ module.exports = {
   		firstname: DataTypes.STRING,
   		lastname: DataTypes.STRING,
   		phone: DataTypes.STRING,
+      zip: DataTypes.INTEGER,
   		match: DataTypes.INTEGER,
   		cuisine: DataTypes.ARRAY(DataTypes.STRING),
 	  	hobbies: DataTypes.ARRAY(DataTypes.STRING),
@@ -30,10 +31,10 @@ module.exports = {
 	  	elements: DataTypes.ARRAY(DataTypes.STRING),
   		createdAt: DataTypes.DATE,
   		updatedAt: DataTypes.DATE
-  	}).complete(done)
+  	}).complete(done);
   },
   down: function(migration, DataTypes, done) {
-  	migration.dropTable('users').then(done);
+  	migration.dropTable('users').complete(done);
   }
-}
+};
 

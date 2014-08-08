@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+<h1>Yelp! Rated Shops That Serve My Favorite Cuisine!</h1>
+<h2><%=  businesses[0].categories[0][0] %></h2>
+
+<ul style="list-style-type: none;">
+	<% businesses.forEach(function (store){ %>
+	<% 	if (store.rating > 4){ %>
+	<%  	var x = store.phone %>
+	<%  	var contact = "("+x[0]+x[1]+x[2]+") "+x[3]+x[4]+x[5]+"-"+x[6]+x[7]+x[8]+x[9] %>
+
+		<li><a href="<%= store.mobile_url%>"><%= store.name %></a></li>
+		<li><img src="<%= store.rating_img_url %>"></li>
+		<li><a href="tel:<%= store.phone %>"><%= contact %></a></li>
+		<br/>
+	<% }}) %>
+</ul>
+
+</body>
+</html>

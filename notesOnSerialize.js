@@ -64,8 +64,32 @@ User.hasOne(User, {as: "Match"})
 User#setMatch(aMatch)
 
 
-
-
+// **********1:M Relationship Setup *******************
+var User = sequelize.define('User', {})
+  , Group = sequelize.define('Group', {})
+ 
+User.hasOne(Group)
+Group.belongsTo(User)
+ 
+User.create({}).complete(function(err, user) {
+  Group.create({}).complete(function(err, group) {
+    // Set the association
+    user.setGroup(group).complete(function(err) {
+      // Get the association
+      user.getGroup().complete(function(err, _group) {
+        console.log(_group.values)
+        /*
+          {
+            id: 1,
+            createdAt: Sun Dec 08 2013 11:46:42 GMT+0100 (CET),
+            updatedAt: Sun Dec 08 2013 11:46:42 GMT+0100 (CET),
+            UserId: 1
+          }
+        */
+      })
+    })
+  })
+})
 
 
 // *****************************May Not Need**************************************

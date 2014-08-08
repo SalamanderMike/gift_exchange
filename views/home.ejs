@@ -67,14 +67,18 @@
               <center>
                 <h1 class="glyphicon glyphicon-glass" style="font-size:14em;color:#f0ad4e"></h1>
                 <h2 style="margin-top: 0;color:#55518a">My Favorite Cuisine</h2>
-                <form action="/enterCuisine" method="post">
-                  <input type="text" name="cuisine[0]" placeholder="Vegetarian"><br/><br/>
-                  <input type="text" name="cuisine[1]" placeholder="Coffee"><br/><br/>
-                  <input type="text" name="cuisine[2]" placeholder="Mexican"><br/><br/>
-                  <input type="text" name="cuisine[3]" placeholder="Pizza"><br/><br/>
-                  <input type="text" name="cuisine[4]" placeholder="Drinks"><br/><br/>
-                  <input type="submit" value="Put it in my Profile!">
-                </form>
+                <ul style="list-style-type: none;">
+                  <% cuisine.forEach(function (item, index){ %>
+                    <form action="/search">
+                      <input type="submit"  name="item[<%=index%>]" value="<%= item %>">
+                      <!-- <input type="hidden" name="locationsearch" value="94115"> -->
+                    </form>
+                    <br/>
+                  <% }) %>
+                </ul>
+
+
+
               </center>
           </div>
           <!-- Hobbies section -->
@@ -82,14 +86,13 @@
               <center>
                 <h1 class="glyphicon glyphicon-film" style="font-size:12em;color:#545454"></h1>
                 <h2 style="margin-top: 0;color:#55518a">My Favorite Hobbies</h2>
-                <form>
-                  <input type="text" placeholder="Rock Climbing"><br/><br/>
-                  <input type="text" placeholder="Movies"><br/><br/>
-                  <input type="text" placeholder="Reading"><br/><br/>
-                  <input type="text" placeholder="Cooking"><br/><br/>
-                  <input type="text" placeholder="Sports"><br/><br/>
-                  <input type="submit" value="Put it in my Profile!">
-                </form>
+                <ul style="list-style-type: none;">
+                  <% hobbies.forEach(function (item){ %>
+                    <form action="/search" method="post">
+                      <input type="submit" name="item" value="<%= item %>">
+                    </form>
+                    <br/>
+                  <% }) %>
               </center>
           </div>
           <!-- Stores search -->
@@ -97,14 +100,13 @@
               <center>
                 <h1 class="glyphicon glyphicon-credit-card" style="font-size:12em;color:#241c82"></h1>
                 <h2 style="margin-top: 0;color:#55518a">My Favorite Stores</h2>
-                <form>
-                  <input type="text" placeholder="JC Penny"><br/><br/>
-                  <input type="text" placeholder="Best Buy"><br/><br/>
-                  <input type="text" placeholder="iTunes"><br/><br/>
-                  <input type="text" placeholder="Google Play"><br/><br/>
-                  <input type="text" placeholder="Sports Authority"><br/><br/>
-                  <input type="submit" value="Put it in my Profile!">
-                </form>
+                <ul style="list-style-type: none;">
+                  <% stores.forEach(function (item){ %>
+                    <form action="/search" method="post">
+                      <input type="submit" name="item" value="<%= item %>">
+                    </form>
+                    <br/>
+                  <% }) %>
               </center>
           </div>
           <!-- Books search -->
@@ -112,14 +114,13 @@
               <center>
                 <h1 class="glyphicon glyphicon-book" style="font-size:12em;color:#543407"></h1>
                 <h2 style="margin-top: 0;color:#55518a">My Favorite Genres of Books </h2>
-                <form>
-                  <input type="text" placeholder="Mystery"><br/><br/>
-                  <input type="text" placeholder="Sci-fi"><br/><br/>
-                  <input type="text" placeholder="Comedy"><br/><br/>
-                  <input type="text" placeholder="Biography"><br/><br/>
-                  <input type="text" placeholder="Historical"><br/><br/>
-                  <input type="submit" value="Put it in my Profile!">
-                </form>
+                <ul style="list-style-type: none;">
+                  <% books.forEach(function (item){ %>
+                    <form action="/search" method="post">
+                      <input type="submit" name="item" value="<%= item %>">
+                    </form>
+                    <br/>
+                  <% }) %>
               </center>
           </div>
           <!-- Clothes search -->
@@ -127,14 +128,13 @@
               <center>
                 <h1 class="glyphicon glyphicon-tags" style="font-size:12em;color:#7f221f"></h1>
                 <h2 style="margin-top: 0;color:#55518a">Clothes I Like to Receive as Gifts</h2>
-                <form>
-                  <input type="text" placeholder="T-Shirt"><br/><br/>
-                  <input type="text" placeholder="Scarf"><br/><br/>
-                  <input type="text" placeholder="Sweater"><br/><br/>
-                  <input type="text" placeholder="Tie"><br/><br/>
-                  <input type="text" placeholder="Sportswear"><br/><br/>
-                  <input type="submit" value="Put it in my Profile!">
-                </form>
+                <ul style="list-style-type: none;">
+                  <% clothes.forEach(function (item){ %>
+                    <form action="/search" method="post">
+                      <input type="submit" name="item" value="<%= item %>">
+                    </form>
+                    <br/>
+                  <% }) %>
               </center>
           </div>
           <!-- Art search -->
@@ -142,14 +142,13 @@
               <center>
                 <h1 class="glyphicon glyphicon-picture" style="font-size:12em;color:#0b512d"></h1>
                 <h2 style="margin-top: 0;color:#55518a">My Favorite Forms of Art</h2>
-                <form>
-                  <input type="text" placeholder="Carving"><br/><br/>
-                  <input type="text" placeholder="Painting"><br/><br/>
-                  <input type="text" placeholder="Figurines"><br/><br/>
-                  <input type="text" placeholder="Photography"><br/><br/>
-                  <input type="text" placeholder="imports"><br/><br/>
-                  <input type="submit" value="Put it in my Profile!">
-                </form>
+                <ul style="list-style-type: none;">
+                  <% art.forEach(function (item){ %>
+                    <form action="/search" method="post">
+                      <input type="submit" name="item" value="<%= item %>">
+                    </form>
+                    <br/>
+                  <% }) %>
               </center>
           </div>
           <!-- Shopping Suggestions -->
@@ -159,9 +158,7 @@
                 <h2 style="margin-top: 0;color:#55518a">Choose a store</h2>
                 <h3 style="margin-top: 0;color:#55518a">and I'll suggest some items at random</h3>
                 <h3 style="margin-top: 0;color:#55518a">based on your gift receiver's taste</h3>
-                <form>
-                  <input type="submit" value="Yelp!">
-                </form>
+                <ul style="list-style-type: none;">
               </center>
           </div>
       </div>

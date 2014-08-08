@@ -16,38 +16,30 @@ module.exports = function Group (sequelize, DataTypes){
 		spendingLimit: DataTypes.INTEGER,
 	  groupTotal: DataTypes.INTEGER,
 	  admin: {
-  		type: DataTypes.INTEGER,
-  		allowNull: false
+  		type: DataTypes.INTEGER
   		},
-		},
+		}, 
 		{classMethods: {
-			// encryptPass: function(groupID){
-			// 	var hash = bcrypt.hashSync(groupID, salt);
-			// 	return hash;
-			// },
-			// comparePass: function(groupPass, dbPass){
-			// 	//carefull not to salt twice
-			// 	return bcrypt.compareSync(groupPass, dbPass);
-			// },
+			associate: function(db){// tell Group that it hasMany users
+				Group.hasMany(db.user, {through: 'linkers'});
+			},
+			encryptPass: function(groupID){
+				var hash = bcrypt.hashSync(groupID, salt);
+				return hash;
+			},
+			comparePass: function(groupPass, dbPass){
+				//carefull not to salt twice
+				return bcrypt.compareSync(groupPass, dbPass);
+			},
 			createNewGroup: function(groupName, groupID, err, success){
-				if (groupID.length < 6){// ACK!!! ON ERROR ( add req, above for flash )
-				// return done(err, req.flash('signupMessage', 'Ack!!! Password should be more than 6 chars'));
-					err({message: 'Password should be more than 6 chars'});
-				} else { 
 					Group.create({
 						groupName: groupName,
-						groupID: Group.encryptPass(groupID),
-					}).error(function (error){// error = object from Sequelize
+						groupID: Group.encryptPass(groupID)
+					}).error(function (error){
 						console.log(error);
-						if (error.groupName) {
-							err({message: 'Your groupName should be 6 chars'});
-						} else {
-							err({message: 'An account with that groupName already exists'});
-						} 
 					}).success(function (group){
-						success({message: 'Account created!'});
+						success(group);
 					});
-				}
 			}
 		}
 	}); 

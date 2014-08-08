@@ -9,9 +9,10 @@ var express = require('express'),
 	  methodOverride = require('method-override'),
 	  db = require('./models/index.js'),
 	  pg = require('pg'),
+	  oauth = require('oauth'),
 	  site = require('./routes/site'),
 	  app = express();
- 
+  
 app.use(express.static(__dirname + '/public'));
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended: true}));
@@ -34,6 +35,17 @@ passport.deserializeUser(function (id, done){
 		where: {id: id}
 	}).complete(function (error, user){
 		done(error, user);
+	});
+});
+
+passport.deserializeUser(function (group, done){
+	done(null, group.id);
+});
+passport.deserializeUser(function (id, done){
+	db.group.find({
+		where: {id: id}
+	}).complete(function (error, group){
+		done(error, group);
 	});
 });
 
