@@ -2,7 +2,7 @@ var express = require('express'),
     router = express.Router(),
    	passport = require('passport'),
 		passportLocal = require('passport-local'),
-	  db = require('.././models/index.js');
+	  db = require('../models/index.js');
 
 
 // YELP REQUIRE
@@ -42,18 +42,15 @@ router.get('/signup', function (req, res) {
 });
 
 router.get('/login', function (req, res) {
-	var eMessage = req.flash('loginMessage');
-	if (!req.user){
-			res.render('login', {message: eMessage});
+	if (req.user){
+			res.redirect('/home');
 	} else {
-		res.redirect('/home');
+		res.render('login');
 	}
 });
 
 router.get('/home', function (req, res) {
-	if (!req.user){
-
-
+	if (req.user){
 		res.render('home', {cuisine: cuisine,
 												hobbies: hobbies,
 												stores: stores,
@@ -63,40 +60,32 @@ router.get('/home', function (req, res) {
 												});
 
 	} else {
-		res.render('/login');
+		res.redirect('/login');
 	}
 }); 
 
 router.get('/editProfile', function (req, res) {
-	if (!req.user){
+	if (req.user){
 		res.render('editProfile');
 	} else {
-		res.render('/login');
+		res.redirect('/login');
 	}
 }); 
 
 router.get('/settings', function (req, res) {
 	if (!req.user){
-		res.render('settings');
+		res.redirect('/login');
 	} else {
-		res.redirect('/home');
+		res.render('settings');
 	}
 });
 
 router.get('/contact', function (req, res) {
-	if (!req.user){
 		res.render('contact');
-	} else {
-		res.render('/home');
-	}
 });
 
 router.get('/about', function (req, res) {
-	if (!req.user){
 		res.render('about');
-	} else {
-		res.render('/home');
-	}
 });
 
 

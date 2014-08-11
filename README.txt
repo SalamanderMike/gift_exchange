@@ -1,1 +1,0 @@
-This web app is to facilitate gift exchanges within groups of people.

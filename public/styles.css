@@ -1,3 +1,11 @@
+/*Navbar Color Override*/
+.navbar-default {
+background-image: -webkit-linear-gradient(top, #ffffff 0%, #dfdfdf 100%);
+background-image: -moz-linear-gradient(top, #ffffff 0%, #dfdfdf 100%);
+background-image: linear-gradient(top, #ffffff 0%, #dfdfdf 100%);
+}
+
+
 /*Settings Progress Bar*/
 .progress-striped .progress-bar-primary {
   background-image: linear-gradient(45deg, rgba(255, 255, 255, .75)   25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .75) 50%, rgba(255, 255, 255, .75) 75%, transparent 75%, transparent);
